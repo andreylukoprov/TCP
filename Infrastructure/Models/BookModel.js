@@ -10,7 +10,8 @@ var bookSchema = mongoose.Schema(
         Price: Number,
         Description:String,
         DateOfPublication: Date,
-        PublishingHouse:String
+        PublishingHouse:String,
+        Category: String
     },
     {
         collection:'Books'

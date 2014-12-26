@@ -7,11 +7,10 @@ var bookRepository = require('../Repositories/BookRepository');
 
 var BookController =
 {
-    GetBooks:function(callback) {
-    bookRepository.GET(function(error,result)
-    {
-        callback(error,result);
-    });
+    GetBooks: function (callback) {
+        bookRepository.GET(function (error, result) {
+            callback(error, result);
+        });
     }
 }
 

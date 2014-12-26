@@ -17,4 +17,5 @@ router.get('/GetData', function(req, res) {
   });
 });
 
+
 module.exports = router;

@@ -9,11 +9,8 @@ angular.module('booksApp',[])
          }
         }
     }).controller('booksController',function($scope,$http,books){
-       // get();
-       // function get() {
             books.GetBooks(function (results) {
-                console.log(results);
                 $scope.books = results;
             })
-        //}
     });
+ 
