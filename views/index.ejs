@@ -1,12 +1,45 @@
 <script src="/javascripts/jquery-2.1.3.js"></script>
 <script src="/javascripts/angular.min.js"></script>
 <script src="/javascripts/UI/Books.js"></script>
-<link rel='stylesheet' href='/stylesheets/style.css'/>
+<script src="/javascripts/UI/Category.js"></script>
 
-<div ng-app="booksApp">
-    <div ng-controller="booksController">
-        <ul ng-repeat="item in books">
-            <li>{{item}}</li>
-        </ul>
+<link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="/stylesheets/UI.css"/>
+
+<div ng-app="booksApp" ng-controller="booksController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <span class="brand">Books Store</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <div ng-controller="categoryController">
+                        <ul class="nav nav-list">
+                            <li class="nav-header">Categories</li>
+                            <li ng-repeat="category in categories" onclick="Active(this)"
+                                ng-click="SetCategory(this.category)">
+                                <a href="#{{category}}">{{category}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                <div class="row-fluid">
+                    <div class="span4" ng-repeat="book in books">
+                        <h2>{{book.Title}}</h2>
+                        <p>{{book.Description}}</p>
+                        <p><a class="btn" href="#">View details &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

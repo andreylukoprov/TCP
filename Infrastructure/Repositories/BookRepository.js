@@ -12,11 +12,23 @@ mongoose.connect('mongodb://'+dbuser+':'+dbpassword+'@ds029950.mongolab.com:2995
 
 var BookRepository =
 {
-    GET:function(callback){
+    GetAllBooks:function(callback){
         books.find({},
             function(error,result)
         {
             callback(error,result);
+        });
+    },
+    GetCategory:function(callback){
+        books.distinct('Category',function(error,result){
+            result.unshift('All');
+            callback(error,result);
+        });
+    },
+    GetBooksByCategory:function(category,callback){
+        books.find({Category:category },
+        function(error,result){
+         callback(error,result);
         })
     }
 }

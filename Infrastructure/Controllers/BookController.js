@@ -7,10 +7,23 @@ var bookRepository = require('../Repositories/BookRepository');
 
 var BookController =
 {
-    GetBooks: function (callback) {
-        bookRepository.GET(function (error, result) {
-            callback(error, result);
-        });
+    GetCategories:function(callback){
+        bookRepository.GetCategory(function(error,result){
+            callback(error,result);
+        })
+    },
+    GetBooksByCategory:function(category,callback){
+        if(category=="All")
+        {
+            bookRepository.GetAllBooks(function (error, result) {
+                callback(error, result)
+            })
+        }
+        else {
+            bookRepository.GetBooksByCategory(category, function (error, result) {
+                callback(error, result)
+            })
+        }
     }
 }
 
