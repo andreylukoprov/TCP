@@ -1,12 +1,17 @@
 <script src="/javascripts/jquery-2.1.3.js"></script>
+<script src="/javascripts/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
 <script src="/javascripts/angular.min.js"></script>
 <script src="/javascripts/UI/Books.js"></script>
 <script src="/javascripts/UI/Category.js"></script>
 
 <link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="/javascripts/jquery-ui-1.11.2.custom/jquery-ui.css"/>
 <link rel="stylesheet" href="/stylesheets/UI.css"/>
 
 <div ng-app="booksApp" ng-controller="booksController">
+
+
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -14,7 +19,6 @@
             </div>
         </div>
     </div>
-
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span3">
@@ -31,15 +35,29 @@
                     </div>
                 </div>
             </div>
+            <div ng-controller='modalController'>
+                <modal-dialog show='modalShown'>
+                    <div class="span9">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <h2>{{bookDetail.Title}}</h2>
+                                <p>{{bookDetail.Description}}</p>
+                                <p>{{bookDetail.Price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </modal-dialog>
             <div class="span9">
                 <div class="row-fluid">
                     <div class="span4" ng-repeat="book in books">
                         <h2>{{book.Title}}</h2>
-                        <p>{{book.Description}}</p>
-                        <p><a class="btn" href="#">View details &raquo;</a></p>
+                        <p>{{book.Price}}</p>
+                        <p><a class="btn" ng-click="openModal(this.book._id)">View details &raquo;</a></p>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </div>
 </div>
+
