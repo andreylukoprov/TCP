@@ -20,7 +20,6 @@ var BookRepository =
     },
     GetCategory: function (callback) {
         books.distinct('Category', function (error, result) {
-            result.unshift('All');
             callback(error, result);
         });
     },

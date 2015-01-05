@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap.css"/>
 <link rel="stylesheet" href="/javascripts/jquery-ui-1.11.2.custom/jquery-ui.css"/>
 <link rel="stylesheet" href="/stylesheets/UI.css"/>
+<link rel="stylesheet" href="/stylesheets/ModalStyle.css"/>
 
 <div ng-app="booksApp" ng-controller="booksController">
-
 
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,6 +26,8 @@
                     <div ng-controller="categoryController">
                         <ul class="nav nav-list">
                             <li class="nav-header">Categories</li>
+                            <li class="active" onclick="Active(this)" ng-click="SetCategory('All')"><a
+                                        href="#All">All</a></li>
                             <li ng-repeat="category in categories" onclick="Active(this)"
                                 ng-click="SetCategory(this.category)">
                                 <a href="#{{category}}">{{category}}
@@ -37,27 +39,27 @@
             </div>
             <div ng-controller='modalController'>
                 <modal-dialog show='modalShown'>
-                    <div class="span9">
-                        <div class="row-fluid">
-                            <div class="span4">
-                                <h2>{{bookDetail.Title}}</h2>
-                                <p>{{bookDetail.Description}}</p>
-                                <p>{{bookDetail.Price}}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h2>{{bookDetail.Title}}</h2>
+
+                    <p>{{bookDetail.Description}}</p>
+
+                    <p class="pull-right pull-down">Price:{{bookDetail.Price}}</p>
                 </modal-dialog>
-            <div class="span9">
-                <div class="row-fluid">
-                    <div class="span4" ng-repeat="book in books">
-                        <h2>{{book.Title}}</h2>
-                        <p>{{book.Price}}</p>
-                        <p><a class="btn" ng-click="openModal(this.book._id)">View details &raquo;</a></p>
+                <div class="span9">
+                    <div class="row-fluid">
+                        <div class="well span4" ng-repeat="book in books">
+                            <h2>{{book.Title}}</h2>
+
+                            <p class="pull-down">Price{{book.Price}}</p>
+
+                            <p><a class="btn" ng-click="openModal(this.book._id)">View details &raquo;</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 </div>
 
+<hr>
+<p class="text-center">©BooksStore, 2015</p>

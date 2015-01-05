@@ -1,5 +1,5 @@
 /**
- * Created by AndreyLukoprov on 12/26/2014.
+ * Created by AndreyLukoprov on 1/5/2015.
  */
 angular.module('booksApp', [])
     .factory('data', function ($http) {
@@ -63,11 +63,11 @@ angular.module('booksApp', [])
     }).
 
     controller('modalController',function($scope, $http, data) {
-    $scope.modalShown = false;
-    $scope.openModal = function(id) {
-        $scope.modalShown = !$scope.modalShown;
-        data.GetBooksById(id,function(result){
-            $scope.bookDetail = result[0];
-        });
-    };
-});
+        $scope.modalShown = false;
+        $scope.openModal = function(id) {
+            $scope.modalShown = !$scope.modalShown;
+            data.GetBooksById(id,function(result){
+                $scope.bookDetail = result[0];
+            });
+        };
+    });
