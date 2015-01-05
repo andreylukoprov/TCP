@@ -1,5 +1,5 @@
 body {
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 hr {
@@ -14,8 +14,9 @@ hr {
 }
 
 .text-overflow{
-    width: 50%;
-    height: 50%;
-overflow: hidden;
-text-overflow: ellipsis;
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 }
