@@ -28,6 +28,16 @@ var BookController =
         bookRepository.GetBookById(id,function (error, result) {
             callback(error, result);
         })
+    },
+    RemoveBook: function (id, callback) {
+        bookRepository.RemoveBook(id,function (error, result) {
+            callback(error, result);
+        })
+    },
+    AddBook:function(book,callback){
+        bookRepository.AddBook(book,function(error,result){
+            callback(error,result);
+        });
     }
 }
 

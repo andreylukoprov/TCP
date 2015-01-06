@@ -5,3 +5,6 @@ function Active(li){
     $(".list-group a").removeClass("active");
     $(li).addClass("active");
 }
+function GetCategory(){
+    return $(".list-group .active")[0].innerHTML;
+}

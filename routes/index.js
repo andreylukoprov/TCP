@@ -25,7 +25,6 @@ router.get('/GetBooksByCategory/:category', function (req, res) {
 });
 
 router.get('/GetBooksById/:id',function(req,res){
-    console.log(req.params.id);
     booksController.GetBookById(req.params.id, function (error, result) {
         if (!error) {
          res.send(result);

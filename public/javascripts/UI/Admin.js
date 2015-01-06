@@ -15,6 +15,12 @@ angular.module('booksApp', [])
             },
             GetBooksById: function (id, callback) {
                 $http.get('/GetBooksById/' + id).success(callback);
+            },
+            RemoveBook:function(id,callback){
+                $http.post('/admin/RemoveBook',{id:id,category:GetCategory() }).success(callback);
+            },
+            AddNewBook:function(book,callback){
+                $http.post('/admin/AddNewBook',{book:book,category:GetCategory()}).success(callback);
             }
         }
     }).
@@ -23,11 +29,26 @@ angular.module('booksApp', [])
         data.GetBooksByCategory("All", function (result) {
             $scope.books = result;
         });
+
         $scope.SetCategory = function (category) {
             data.GetBooksByCategory(category, function (result) {
                 $scope.books = result;
             })
         };
+
+        $scope.RemoveBook = function(id){
+          data.RemoveBook(id,function(result){
+              $scope.books = result;
+          })
+        };
+
+        $scope.AddNewBook= function(book){
+            data.AddNewBook(book,function(result){
+                debugger;
+                $scope.books = result;
+            });
+        };
+
     }).
 
     controller('categoryController', function ($scope, $http, data) {
@@ -46,7 +67,7 @@ angular.module('booksApp', [])
             transclude: true, // we want to insert custom content inside the directive
             link: function(scope, element, attrs) {
                 scope.dialogStyle = {};
-                scope.dialogStyle.width = '60%';
+                scope.dialogStyle.width = 'auto';
                 scope.dialogStyle.height = 'auto';
                 scope.hideModal = function() {scope.show = false;
                 };

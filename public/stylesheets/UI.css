@@ -14,9 +14,11 @@ hr {
 }
 
 .text-overflow{
-{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.margintop10{
+    margin-top: 10px;
 }
