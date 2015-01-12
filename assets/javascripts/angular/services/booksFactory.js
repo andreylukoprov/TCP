@@ -12,8 +12,8 @@ booksApp.factory('booksFactory', function ($http) {
         GetBooksByCategory: function (category, callback) {
             $http.get('/GetBooksByCategory/' + category).success(callback);
         },
-        GetBooksById: function (id, callback1,callback2) {
-            $http.get('/GetBooksById/' + id).success(callback1).then(callback2);
+        GetBooksById: function (id, callback) {
+            $http.get('/GetBooksById/' + id).success(callback);
         },
         RemoveBook:function(id,callback){
             $http.post('/admin/RemoveBook',{id:id}).success(callback);
