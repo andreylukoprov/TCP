@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var booksController = require('../Infrastructure/Controllers/BookController');
+var booksController = require('../controllers/bookController');
 
 
 /* GET home page. */

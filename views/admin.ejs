@@ -1,21 +1,21 @@
-<script src="/javascripts/jquery-2.1.3.js"></script>
-<script src="/javascripts/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
-<script src="/javascripts/angular.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AdminPage</title>
+    <script src="/javascripts/jquery-2.1.3.js"></script>
+    <script src="/javascripts/angular/angular.min.js"></script>
 
-<script src="/javascripts/angular/booksapp.js"></script>
-<script src="/javascripts/angular/factories/booksFactory.js"></script>
-<script src="/javascripts/angular/controllers/booksController.js"></script>
-<script src="/javascripts/angular/controllers/categoryController.js"></script>
-<script src="/javascripts/angular/directions/AddBookDialogDirective.js"></script>
-<script src="/javascripts/angular/controllers/modalController.js"></script>
+    <script src="/javascripts/angular/booksapp.js"></script>
+    <script src="/javascripts/angular/services/booksFactory.js"></script>
+    <script src="/javascripts/angular/controllers/booksController.js"></script>
+    <script src="/javascripts/angular/controllers/categoryController.js"></script>
 
-<script src="/javascripts/UI/Category.js"></script>
 
-<link rel="stylesheet" href="/javascripts/bootstrap/css/bootstrap.css"/>
-<link rel="stylesheet" href="/javascripts/jquery-ui-1.11.2.custom/jquery-ui.css"/>
-<link rel="stylesheet" href="/stylesheets/UI.css"/>
-<link rel="stylesheet" href="/stylesheets/ModalStyle.css"/>
-
+    <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/ui.css"/>
+</head>
+<body>
 <div ng-app="booksApp" ng-controller="booksController">
 
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -29,53 +29,15 @@
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-6 col-sm-3 sidebar-offcanvas" ng-controller="categoryController">
                 <div class="list-group">
-                    <a href="#All" class="list-group-item active" onclick="Active(this)" ng-click="SetCategory('All')">All</a>
                     <a href="#{{category}}" class="list-group-item" ng-repeat="category in categories"
-                       onclick="Active(this)" ng-click="SetCategory(this.category)">{{category}}</a>
+                       ng-click="SetCategory(this.category)">{{category}}</a>
                 </div>
             </div>
-            <div ng-controller='modalController'>
-                <modal-dialog show='modalShown'>
-                    <div class="container">
-                        <h2 class="text-center">Add new book</h2>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="Title">Title:</label>
-                                <input type="text" class="form-control" id="title"  ng-model="book.Title" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="Price">Price:</label>
-                                <input type="text" class="form-control" id="Price"  ng-model="book.Price" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="Description">Description:</label>
-                                <input type="text" class="form-control" id="Description"  ng-model="book.Description" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="DateOfPublication">Date Of Publication:</label>
-                                <input type="text" class="form-control" id="DateOfPublication"  ng-model="book.DateOfPublication" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="PublishingHouse">Publishing House:</label>
-                                <input type="text" class="form-control" id="PublishingHouse"  ng-model="book.PublishingHouse" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="Category">Category:</label>
-                                <input type="text" class="form-control" id="Category"  ng-model="book.Category" value="1">
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-5 col-sm-10">
-                                    <button type="submit" class="btn btn-default" ng-click="AddNewBook(book)" ng-click="">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </modal-dialog>
+            <div>
                 <div class="col-xs-12 col-sm-9">
                     <div class="row">
-                        <div >
-                            <button type="button" class="btn btn-success" aria-label="Left Align"
-                                    ng-click="openModal()">
+                        <div>
+                            <button type="button" class="btn btn-success" aria-label="Left Align">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true">Add</span>
                             </button>
                         </div>
@@ -96,19 +58,19 @@
                                 <tbody>
                                 <tr ng-repeat="book in books" class="text-overflow">
                                     <td>{{$index+1}}</td>
-                                    <td>{{book.Title}}</td>
-                                    <td>{{book.Price}}</td>
-                                    <td>{{book.Description}}</td>
-                                    <td>{{book.DateOfPublication}}</td>
-                                    <td>{{book.PublishingHouse}}</td>
-                                    <td>{{book.Category}}</td>
+                                    <td>{{book.title}}</td>
+                                    <td>{{book.price}}</td>
+                                    <td>{{book.description}}</td>
+                                    <td>{{book.dateOfPublication}}</td>
+                                    <td>{{book.publishingHouse}}</td>
+                                    <td>{{book.category}}</td>
                                     <td>
                                         <button type="button" class="btn btn-default" aria-label="Left Align"
-                                                ng-click="openModal(this.book._id)">
+                                                >
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                         </button>
                                         <button type="button" class="btn btn-default" aria-label="Left Align"
-                                                ng-click="RemoveBook(this.book._id)">
+                                                ng-click="RemoveBook(this.book)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         </button>
                                     </td>
@@ -129,3 +91,6 @@
 
     </div>
 </div>
+</body>
+</html>
+

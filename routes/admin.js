@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
-var booksController = require('../Infrastructure/Controllers/BookController');
+var booksController = require('../controllers/bookController');
 
 router.get('/', function (req, res) {
     res.render('admin');
@@ -12,23 +12,15 @@ router.get('/', function (req, res) {
 router.post('/RemoveBook', function (req, res) {
     booksController.RemoveBook(req.body.id, function (error, result) {
         if (!error) {
-            booksController.GetBooksByCategory(req.body.category, function (error, result) {
-                if (!error) {
-                    res.send(result);
-                }
-            });
+            res.send(true);
         }
-    })
+    });
 });
 
 router.post('/AddNewBook', function (req, res) {
     booksController.AddBook(req.body.book, function (error, result) {
         if (!error) {
-            booksController.GetBooksByCategory(req.body.category, function (error, result) {
-                if (!error) {
-                    res.send(result);
-                }
-            });
+            res.send(false);
         }
     });
 });
