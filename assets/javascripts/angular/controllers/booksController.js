@@ -1,19 +1,19 @@
 /**
  * Created by AndreyLukoprov on 1/8/2015.
  */
-booksApp.controller('booksController',['$scope','$http','data', function ($scope, $http, data) {
-    data.GetBooksByCategory("All", function (result) {
+booksApp.controller('booksController',['$scope','$http','booksFactory', function ($scope, $http, booksFactory) {
+    booksFactory.GetBooksByCategory("All", function (result) {
         $scope.books = result;
     });
 
     $scope.SetCategory = function (category) {
-        data.GetBooksByCategory(category, function (result) {
+        booksFactory.GetBooksByCategory(category, function (result) {
             $scope.books = result;
-        })
+        });
     };
 
     $scope.RemoveBook = function(book){
-        data.RemoveBook(book._id,function(result){
+        booksFactory.RemoveBook(book._id,function(result){
            if(result!=="") {
                $scope.books.splice($scope.books.indexOf(book), 1);
            }
@@ -21,7 +21,7 @@ booksApp.controller('booksController',['$scope','$http','data', function ($scope
     };
 
     $scope.AddNewBook= function(book){
-        data.AddNewBook(book,function(result){
+        booksFactory.AddNewBook(book,function(result){
             $scope.books = result;
         });
     };

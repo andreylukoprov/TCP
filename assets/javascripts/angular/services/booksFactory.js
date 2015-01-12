@@ -1,7 +1,7 @@
 /**
  * Created by AndreyLukoprov on 1/8/2015.
  */
-booksApp.factory('data', function ($http) {
+booksApp.factory('booksFactory', function ($http) {
     return {
         GetBooks: function (callback) {
             $http.get('/GetData').success(callback);
@@ -12,8 +12,8 @@ booksApp.factory('data', function ($http) {
         GetBooksByCategory: function (category, callback) {
             $http.get('/GetBooksByCategory/' + category).success(callback);
         },
-        GetBooksById: function (id, callback) {
-            $http.get('/GetBooksById/' + id).success(callback);
+        GetBooksById: function (id, callback1,callback2) {
+            $http.get('/GetBooksById/' + id).success(callback1).then(callback2);
         },
         RemoveBook:function(id,callback){
             $http.post('/admin/RemoveBook',{id:id}).success(callback);
