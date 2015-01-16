@@ -1,7 +1,7 @@
 /**
  * Created by AndreyLukoprov on 1/12/2015.
  */
-booksApp.controller('modalController', ['$scope', '$modal', 'booksFactory', function ($scope, $modal, booksFactory) {
+booksApp.controller('modalController', ['$scope', '$modal', function ($scope, $modal) {
 
 
     $scope.openViewInfo = function (book) {
@@ -52,14 +52,14 @@ booksApp.controller('modalController', ['$scope', '$modal', 'booksFactory', func
         });
     };
 
-    $scope.openEditAuthor = function (book) {
+    $scope.openEditAuthor = function (author) {
         var modalInstance = $modal.open({
             templateUrl: '/modal/AddEditAuthor',
             controller: 'addEditAuthorModalController',
             size: 'lg',
             resolve: {
-                authors: function () {
-                    return $scope.authors;
+                author: function () {
+                    return author;
                 }
             }
         });
@@ -71,13 +71,13 @@ booksApp.controller('modalController', ['$scope', '$modal', 'booksFactory', func
             controller: 'addEditAuthorModalController',
             size: 'lg',
             resolve: {
-                authors: function () {
-                    return $scope.authors;
+                author: function () {
+                    return null;
                 }
             }
         });
         modalInstance.result.then(function (book) {
-            $scope.books.push(book);
+            $scope.authors.push(book);
         });
     };
 

@@ -1,14 +1,17 @@
 /**
  * Created by AndreyLukoprov on 1/16/2015.
  */
-booksApp.controller('addEditAuthorModalController', ['$scope', '$modalInstance', 'booksFactory', 'authors', function ($scope, $modalInstance, booksFactory, authors) {
+booksApp.controller('addEditAuthorModalController', ['$scope', '$modalInstance', 'booksFactory', 'author', function ($scope, $modalInstance, booksFactory, author) {
 
-    $scope.authors = authors;
+    $scope.author = author;
 
-    $scope.save = function (author) {
+    $scope.saveAuthor = function (author) {
         var newAuthor = {
-            author: author
+            _id: author._id,
+            firstName: author.firstName,
+            lastName: author.lastName
         };
+        console.log(newAuthor);
         booksFactory.addNewAuthor(newAuthor, function (result) {
             $modalInstance.close(newAuthor);
         });
