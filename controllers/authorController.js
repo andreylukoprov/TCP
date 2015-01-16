@@ -12,7 +12,7 @@ var AuthorController =
       service.removeAuthor(id,callback);
    },
     addUpdateAuthor:function(author,callback){
-        if(author.id===undefined){
+        if(author._id===undefined){
             service.addAuthor(author,callback);
         }else{
             service.updateAuthor(author,callback);

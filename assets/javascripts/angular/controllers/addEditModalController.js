@@ -16,9 +16,8 @@ booksApp.controller('addEditModalController', ['$scope', '$modalInstance','books
             $scope.bookAuthor = $scope.authors[index];
         }
     }
-    console.log($scope.bookAuthor);
+
     $scope.save = function (book, author) {
-        console.log(author);
         var newBook ={
             _id:book._id,
             title: book.title,
@@ -32,10 +31,6 @@ booksApp.controller('addEditModalController', ['$scope', '$modalInstance','books
 
         booksFactory.AddNewBook(newBook,function(result){
             $modalInstance.close(newBook);
-            $scope.book = null;
-            $scope.authors =null;
-            $scope.bookAuthor = null;
-            index = 0;
         });
     };
 

@@ -5,10 +5,6 @@ var service = require('../services/main-service');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    service.getBooksByCategory('All',function(error,result){
-        console.log(result);
-        console.log(error);
-    })
     res.render('index');
 });
 

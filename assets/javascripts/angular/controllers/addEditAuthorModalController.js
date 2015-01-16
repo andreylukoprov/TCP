@@ -11,7 +11,6 @@ booksApp.controller('addEditAuthorModalController', ['$scope', '$modalInstance',
             firstName: author.firstName,
             lastName: author.lastName
         };
-        console.log(newAuthor);
         booksFactory.addNewAuthor(newAuthor, function (result) {
             $modalInstance.close(newAuthor);
         });

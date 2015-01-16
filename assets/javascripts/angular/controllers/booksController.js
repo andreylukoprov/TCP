@@ -25,7 +25,7 @@ booksApp.controller('booksController',['$scope','$http','booksFactory', function
     };
 
     $scope.RemoveAuthor = function(author){
-        booksFactory.RemoveBook(author._id,function(result){
+        booksFactory.removeAuthor(author._id,function(result){
             if(result!=="") {
                 $scope.authors.splice($scope.authors.indexOf(author), 1);
             }
