@@ -6,6 +6,10 @@ booksApp.controller('booksController',['$scope','$http','booksFactory', function
         $scope.books = result;
     });
 
+    booksFactory.getAllAuthors( function (result) {
+        $scope.authors = result;
+    });
+
     $scope.SetCategory = function (category) {
         booksFactory.GetBooksByCategory(category, function (result) {
             $scope.books = result;
@@ -20,9 +24,12 @@ booksApp.controller('booksController',['$scope','$http','booksFactory', function
         })
     };
 
-    $scope.AddNewBook= function(book){
-        booksFactory.AddNewBook(book,function(result){
-            $scope.books = result;
-        });
+    $scope.RemoveAuthor = function(author){
+        booksFactory.RemoveBook(author._id,function(result){
+            if(result!=="") {
+                $scope.authors.splice($scope.authors.indexOf(author), 1);
+            }
+        })
     };
+
 }]);

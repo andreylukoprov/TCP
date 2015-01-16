@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var modal = require('./routes/modal');
 
+var mongoose = require("mongoose");
+
 var app = express();
 
 // view engine setup
@@ -35,11 +37,15 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+var dbuser = 'sa';
+var dbpassword = '1';
+
 // error handlers
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
+    mongoose.connect('mongodb://' + dbuser + ':' + dbpassword + '@ds029950.mongolab.com:29950/traningdb');
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {

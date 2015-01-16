@@ -13,7 +13,7 @@
 
     <script src="/javascripts/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="/javascripts/angular/controllers/modalController.js"></script>
-    <script src="/javascripts/angular/controllers/modalInstanceController.js"></script>
+    <script src="/javascripts/angular/controllers/viewInfoModalController.js"></script>
 
 
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css"/>
@@ -45,7 +45,7 @@
 
                             <p class="pull-down">Price:{{book.price}}</p>
 
-                            <p><a class="btn btn-default lead" ng-click="open(this.book._id)">View details &raquo;</a>
+                            <p><a class="btn btn-default lead" ng-click="openViewInfo(this.book)">View details &raquo;</a>
                             </p>
                         </div>
                     </div>

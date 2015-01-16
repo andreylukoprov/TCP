@@ -1,29 +1,25 @@
 /**
  * Created by User on 12/23/2014.
  */
-var express = require('express');
 var mongoose = require("mongoose");
 
 var bookSchema = mongoose.Schema(
     {
-        title:String,
+        title: String,
         price: Number,
-        description:String,
+        description: String,
         dateOfPublication: Date,
-        publishingHouse:String,
-        category: String
+        publishingHouse: String,
+        category: String,
+        authorID: String
     },
     {
-        collection:'Books'
+        collection: 'Books'
     }
 );
 
-var books = mongoose.model('books',bookSchema);
+var books = mongoose.model('books', bookSchema);
 
-var dbuser = 'sa';
-var dbpassword = '1';
-
-mongoose.connect('mongodb://' + dbuser + ':' + dbpassword + '@ds029950.mongolab.com:29950/traningdb');
 
 var BookRepository =
 {
@@ -58,7 +54,7 @@ var BookRepository =
             },
             function (error, result) {
                 callback(error, result);
-            })
+            });
     },
     AddBook: function (book, callback) {
         var newBook = new books({
@@ -67,10 +63,27 @@ var BookRepository =
             description: book.description,
             dateOfPublication: book.dateOfPublication,
             publishingHouse: book.publishingHouse,
-            category: book.category
+            category: book.category,
+            authorID: book.author._id
         });
-        newBook.save();
-        callback(undefined, undefined);
+        newBook.save(function (error, result) {
+            callback(error, result);
+        });
+    },
+    updateBook: function (book, callback) {
+        books.update({_id: book._id}, {
+            $set: {
+                title: book.title,
+                price: book.price,
+                description: book.description,
+                dateOfPublication: book.dateOfPublication,
+                publishingHouse: book.publishingHouse,
+                category: book.category,
+                authorID: book.author._id
+            }
+        }, function (error, result) {
+            callback(error, result);
+        });
     }
 }
 

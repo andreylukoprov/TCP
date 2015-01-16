@@ -10,4 +10,13 @@ router.get('/ViewInfo', function (req, res) {
     res.render('./modals/viewInfo');
 });
 
+router.get('/AddEdit', function (req, res) {
+    res.render('./modals/addEdit');
+});
+
+router.get('/AddEditAuthor', function (req, res) {
+    res.render('./modals/addEditAuthor');
+});
+
+
 module.exports = router;

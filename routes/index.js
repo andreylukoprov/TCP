@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var booksController = require('../controllers/bookController');
-
+var service = require('../services/main-service');
 
 /* GET home page. */
 router.get('/', function (req, res) {
+    service.getBooksByCategory('All',function(error,result){
+        console.log(result);
+        console.log(error);
+    })
     res.render('index');
 });
 

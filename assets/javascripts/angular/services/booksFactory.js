@@ -20,6 +20,15 @@ booksApp.factory('booksFactory', function ($http) {
         },
         AddNewBook:function(book,callback){
             $http.post('/admin/AddNewBook',{book:book}).success(callback);
+        },
+        getAllAuthors:function(callback){
+            $http.get('/admin/GetAllAuthors').success(callback);
+        },
+        addNewAuthor:function(author,callback){
+            $http.post('/admin/AddNewAuthor',{author:author}).success(callback);
+        },
+        removeAuthor:function(id,callback){
+            $http.post('/admin/RemoveAuthor',{id:id}).success(callback);
         }
     }
 });
