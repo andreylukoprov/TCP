@@ -29,13 +29,19 @@
         </div>
         <div class="form-group">
             <label>Author:</label>
-            <select class="form-control" ng-model="bookAuthor" ng-options="(a.firstName+' '+ a.lastName) for a in authors">
-                <option></option>
-            </select>
+            <div class="dropdown ">
+               <button class="btn btn-default dropdown-toggle authorDD" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                   <span class="caret"></span>
+                    {{authordd.firstName}} {{authordd.lastName}}
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li ng-click="changeAuthor(author)" ng-repeat="author in authors">{{author.firstName}} {{author.lastName}}</li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success" ng-click="save(book,bookAuthor)">Save</button>
+        <button class="btn btn-success" ng-click="save(book)">Save</button>
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
     </div>
 </div>

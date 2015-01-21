@@ -1,37 +1,34 @@
 /**
  * Created by AndreyLukoprov on 1/14/2015.
  */
-booksApp.controller('addEditModalController', ['$scope', '$modalInstance','booksFactory', 'book', 'authors', function ($scope, $modalInstance, booksFactory,book, authors) {
+booksApp.controller('addEditModalController', ['$scope', '$modalInstance', 'booksFactory', 'book', 'authors', function ($scope, $modalInstance, booksFactory, book, authors) {
 
     $scope.book = book;
     $scope.authors = authors;
-    if (book !== null) {
-        var index = -1;
-        for (var i = 0; i < authors.length; i++) {
-            if (authors[i]._id === book.author._id) {
-                index = i;
-            }
-        }
-        if (index !== -1) {
-            $scope.bookAuthor = $scope.authors[index];
-        }
+
+    if ($scope.book != null) {
+        $scope.authordd = $scope.book.author;
     }
 
-    $scope.save = function (book, author) {
-        var newBook ={
-            _id:book._id,
+    $scope.save = function (book) {
+        var newBook = {
+            _id: book._id,
             title: book.title,
             price: book.price,
             description: book.description,
             dateOfPublication: book.dateOfPublication,
             publishingHouse: book.publishingHouse,
             category: book.category,
-            author:author
+            author: $scope.authordd
         };
 
-        booksFactory.AddNewBook(newBook,function(result){
+        booksFactory.AddNewBook(newBook, function () {
             $modalInstance.close(newBook);
         });
+    };
+
+    $scope.changeAuthor = function (author) {
+        $scope.authordd = author;
     };
 
     $scope.cancel = function () {

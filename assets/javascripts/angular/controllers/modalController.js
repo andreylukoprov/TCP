@@ -31,6 +31,10 @@ booksApp.controller('modalController', ['$scope', '$modal', function ($scope, $m
                 }
             }
         });
+        modalInstance.result.then(function(editedBook){
+            $scope.books[$scope.books.indexOf(book)] = editedBook;
+        });
+
     };
 
     $scope.openAdd = function () {
@@ -63,6 +67,7 @@ booksApp.controller('modalController', ['$scope', '$modal', function ($scope, $m
                 }
             }
         });
+
     };
 
     $scope.openAddAuthor = function () {

@@ -8,6 +8,10 @@ var authorsController = require('../controllers/authorController');
 var service = require('../services/main-service');
 
 router.get('/', function (req, res) {
+    res.render('authorization');
+});
+
+router.get('/admin', function (req, res) {
     res.render('admin');
 });
 
