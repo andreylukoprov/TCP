@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var expresssession = require('express-session');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var modal = require('./routes/modal');
@@ -16,15 +16,28 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(expresssession({
+    secret:"mysession",
+    key:"orders",
+    cookie:{
+        "path": "/",
+        "httpOnly": true,
+        "maxAge": null
+    }
+   // instance:require('./models/cart')
+}));
+
+
 app.use(require('less-middleware')(path.join(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+
 
 app.use('/', routes);
 app.use('/admin',admin);

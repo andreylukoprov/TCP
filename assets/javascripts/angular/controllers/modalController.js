@@ -31,7 +31,8 @@ booksApp.controller('modalController', ['$scope', '$modal', function ($scope, $m
                 }
             }
         });
-        modalInstance.result.then(function(editedBook){
+        modalInstance.result.then(function (editedBook) {
+            $scope.checkCategory(editedBook);
             $scope.books[$scope.books.indexOf(book)] = editedBook;
         });
 
@@ -86,5 +87,13 @@ booksApp.controller('modalController', ['$scope', '$modal', function ($scope, $m
         });
     };
 
+    $scope.checkCategory = function (book) {
+        console.log($scope.categories);
+      //  debugger;
+      /*  var index = $scope.categories.indexOf(book.category);
+        if (index == -1) {
+            $scope.categories.push(book.category);
+        }*/
+    };
 
 }]);
