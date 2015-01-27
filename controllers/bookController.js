@@ -4,6 +4,8 @@
 var bookRepository = require('../core/repositories/bookRepository');
 var service = require('../services/main-service');
 
+var cartModel = require('../models/cartModel');
+
 var deferred = require('deferred');
 
 var BookController =
@@ -38,6 +40,19 @@ var BookController =
         }else{
             bookRepository.updateBook(book,callback);
         }
+    },
+    getFromCart:function(cart,callback){
+        deferred.map(cart.books,function(book){
+            var d = deferred();
+            service.getBookById(book.id,function(error,result){
+               if(!error){
+                   d.resolve(new cartModel(result[0],book.amount));
+               }
+            });
+            return d.promise;
+        })(function(result){
+            callback(null,result);
+        });
     }
 }
 

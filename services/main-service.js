@@ -3,6 +3,7 @@
  */
 var bookRepository = require('../core/repositories/bookRepository');
 var authorRepository = require('../core/repositories/authorRepository');
+var orderRepository = require('../core/repositories/orderRepository');
 var BookModel = require('../models/bookModel');
 
 var deferred = require('deferred');
@@ -42,7 +43,7 @@ var MainService = {
             }
         });
     },
-    getAllBooks:function(callback){
+    getAllBooks: function (callback) {
         bookRepository.GetAllBooks(function (error, books) {
             if (!error) {
                 deferred.map(books, function (book) {
@@ -59,19 +60,24 @@ var MainService = {
             }
         });
     },
-    getAllAuthors:function(callback){
+    getAllAuthors: function (callback) {
         authorRepository.getAllAuthors(callback);
     },
-    updateAuthor:function(author,callback){
-        authorRepository.updateAuthor(author,callback);
+    updateAuthor: function (author, callback) {
+        authorRepository.updateAuthor(author, callback);
     },
-    addAuthor:function(author,callback){
-        authorRepository.addAuthor(author,callback);
+    addAuthor: function (author, callback) {
+        authorRepository.addAuthor(author, callback);
     },
-    removeAuthor:function(id,callback){
-        authorRepository.removeAuthor(id,callback);
+    removeAuthor: function (id, callback) {
+        authorRepository.removeAuthor(id, callback);
+    },
+    addNewOrder: function (customer, books, callback) {
+        orderRepository.addNewOrder(customer, books, callback);
+    },
+    getAllOrders: function (callback) {
+        orderRepository.getAllOrders(callback);
     }
-
 
 }/////
 

@@ -1,0 +1,46 @@
+<div ng-controller="modalController">
+    <div class="modal-header">
+        <h3 class="modal-title">My Cart</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in books" class="text-overflow">
+                    <td>{{$index+1}}</td>
+                    <td>{{book.cartBook.title}}</td>
+                    <td>{{book.cartBook.price}}</td>
+                    <td>{{book.cartBook.category}}</td>
+                    <td>{{book.amount}}</td>
+                    <td>
+                        <button type="button" class="btn btn-default"
+                                aria-label="Left Align"
+                                ng-click="openViewInfo(this.book.cartBook)">
+                            <span class="glyphicon glyphicon-info-sign"
+                                  aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default"
+                                aria-label="Left Align"
+                                ng-click="removeBookFromCart(this.book.cartBook._id)">
+                            <span class="glyphicon glyphicon-remove"
+                                  aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="openPlaceAnOrder()">Place an order</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

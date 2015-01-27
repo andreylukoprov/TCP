@@ -1,0 +1,23 @@
+﻿<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Ordering</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>First name:</label>
+            <input type="text" ng-model="customer.firstName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Last name:</label>
+            <input type="text" ng-model="customer.lastName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="text" ng-model="customer.phone" class="form-control">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="placeAnOrder(customer)">Place an order</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

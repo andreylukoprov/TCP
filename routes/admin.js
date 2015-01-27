@@ -55,4 +55,12 @@ router.post('/AddNewAuthor', function (req, res) {
     });
 });
 
+router.get('/GetAllOrders', function (req, res) {
+    service.getAllOrders(function (error, result) {
+        if (!error) {
+            res.send(result);
+        }    
+    });
+});
+
 module.exports = router;

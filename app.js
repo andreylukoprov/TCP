@@ -8,6 +8,7 @@ var expresssession = require('express-session');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var modal = require('./routes/modal');
+var cart = require('./routes/cart');
 
 var mongoose = require("mongoose");
 
@@ -22,6 +23,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(expresssession({
     secret:"mysession",
     key:"orders",
@@ -30,7 +32,6 @@ app.use(expresssession({
         "httpOnly": true,
         "maxAge": null
     }
-   // instance:require('./models/cart')
 }));
 
 
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use('/', routes);
 app.use('/admin',admin);
 app.use('/modal',modal);
+app.use('/cart',cart);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

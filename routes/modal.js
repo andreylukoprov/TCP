@@ -18,5 +18,12 @@ router.get('/AddEditAuthor', function (req, res) {
     res.render('./modals/addEditAuthor');
 });
 
+router.get('/CartInfo', function (req, res) {
+    res.render('./modals/cartInfo');
+});
+
+router.get('/PlaceAnOrder', function (req, res) {
+    res.render('./modals/placeAnOrder');
+});
 
 module.exports = router;

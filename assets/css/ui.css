@@ -1,7 +1,6 @@
 body {
     margin-top: 60px;
 }
-
 hr {
     display: block;
     height: 1px;
@@ -12,17 +11,20 @@ hr {
     width: 95%;
     margin-left: 2.5%;
 }
-
 .text-overflow{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.margintop10{
-    margin-top: 10px;
-}
 .authorDD{
     width:100%;
     text-align: left;
+}
+.table {
+    table-layout:fixed;
+}
+
+.table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

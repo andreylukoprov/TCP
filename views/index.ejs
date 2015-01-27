@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -11,53 +11,68 @@
     <script src="/javascripts/angular/controllers/booksController.js"></script>
     <script src="/javascripts/angular/controllers/categoryController.js"></script>
 
+
     <script src="/javascripts/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="/javascripts/angular/controllers/modalController.js"></script>
     <script src="/javascripts/angular/controllers/viewInfoModalController.js"></script>
-
+    <script src="/javascripts/angular/controllers/cartModalController.js"></script>
+    <script src="/javascripts/angular/controllers/placeAnOrderModalController.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="/css/ui.css"/>
 </head>
 <body>
 <div ng-app="booksApp" ng-controller="booksController">
-
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <span class="navbar-brand">Book Store</span>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row row-offcanvas row-offcanvas-right">
-            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" ng-controller="categoryController">
-                <div class="list-group">
-                    <a href="#{{category}}" class="list-group-item" ng-repeat="category in categories"
-                      ng-click="SetCategory(this.category)">{{category}}</a>
+    <div ng-controller="modalController">
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <span class="navbar-brand">Book Store</span>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-click="openCart()"><a>Cart:{{booksAmount}}</a></li>
+                    </ul>
                 </div>
             </div>
-            <div ng-controller="modalController">
-                <div class="col-xs-12 col-sm-9">
-                    <div class="row">
-                        <div class="col-xs-6 col-lg-4" ng-repeat="book in books">
-                            <h2>{{book.title}}</h2>
+        </nav>
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" ng-controller="categoryController">
+                    <div class="list-group">
+                        <a href="#{{category}}" class="list-group-item" ng-repeat="category in categories"
+                           ng-click="SetCategory(this.category)">{{category}}</a>
+                    </div>
+                </div>
+                <div >
+                    <div class="col-xs-12 col-sm-9">
+                        <div class="row">
+                            <div class="col-xs-6 col-lg-4 " ng-repeat="book in books">
+                                <h2 class="text-overflow">{{book.title}}</h2>
 
-                            <p class="pull-down">Price:{{book.price}}</p>
+                                <p class="pull-down">Price:{{book.price}}</p>
 
-                            <p><a class="btn btn-default lead" ng-click="openViewInfo(this.book)">View details &raquo;</a>
-                            </p>
+                                <div>
+                                    <button type="button" class="btn btn-info" ng-click="openViewInfo(this.book)">View
+                                        info
+                                    </button>
+                                    <button type="button" class="btn btn-success" ng-click="addToCart(this.book._id)">
+                                        +Add to cart
+                                    </button>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <hr>
+
+            <footer>
+                <p>&copy; Book Store, 2015</p>
+            </footer>
+
         </div>
-        <hr>
-
-        <footer>
-            <p>&copy; Book Store, 2015</p>
-        </footer>
-
     </div>
 </div>
 </body>
