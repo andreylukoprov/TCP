@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var booksController = require('../controllers/bookController');
 var authorsController = require('../controllers/authorController');
+var ordersController = require('../controllers/orderController');
 var service = require('../services/main-service');
 
 router.get('/', function (req, res) {
@@ -56,7 +57,7 @@ router.post('/AddNewAuthor', function (req, res) {
 });
 
 router.get('/GetAllOrders', function (req, res) {
-    service.getAllOrders(function (error, result) {
+    ordersController.getAllOrders(function (error, result) {
         if (!error) {
             res.send(result);
         }    

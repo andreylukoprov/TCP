@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                             </tab>
-                            <tab heading="Authors">
+                            <tab heading="Orders">
                                 <div>
                                     <div>
                                         <button type="button" class="btn btn-success" aria-label="Left Align">
@@ -160,9 +160,9 @@
                                             <tbody>
                                                 <tr ng-repeat="order in orders" class="text-overflow">
                                                     <td>{{$index+1}}</td>
-                                                    <td>{{order.firstName}}</td>
-                                                    <td>{{order.lastName}}</td>
-                                                    <td>{{order.phone}}</td>
+                                                    <td>{{order.customer.firstName}}</td>
+                                                    <td>{{order.customer.lastName}}</td>
+                                                    <td>{{order.customer.phone}}</td>
                                                     <td>
                                                         
                                                     </td>
