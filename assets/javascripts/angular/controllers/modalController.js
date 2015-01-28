@@ -127,5 +127,18 @@ booksApp.controller('modalController', ['$scope', '$modal', 'booksFactory', func
             });
         };
 
+        $scope.openOrderInfo = function (order) {
+            var modalInstance = $modal.open({
+                templateUrl: '/modal/OrderInfo',
+                controller: 'orderInfoModalController',
+                size: 'lg',
+                resolve: {
+                    order: function () {
+                        return order;
+                    }
+                }
+            });
+        };
+
 
     }]);

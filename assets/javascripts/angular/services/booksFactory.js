@@ -39,14 +39,17 @@ booksApp.factory('booksFactory', function ($http) {
         getAmount: function (callback) {
             $http.get('/cart/GetAmount').success(callback);
         },
-        removeFromCart: function (id,callback){
+        removeFromCart: function (id, callback) {
             $http.post('/cart/RemoveFromCart', { id: id }).success(callback);
         },
-        placeAnOrder: function (customer, callback){
+        placeAnOrder: function (customer, callback) {
             $http.post('/cart/PlaceAnOrder', { customer: customer }).success(callback);
         },
-        getAllOrders: function (callback){
+        getAllOrders: function (callback) {
             $http.get('/admin/GetAllOrders').success(callback);
+        },
+        updateOrderStatus: function (id, status, callback) {
+            $http.post('/admin/UpdateOrderStatus', { id: id, status: status }).success(callback);
         }
     }
 });

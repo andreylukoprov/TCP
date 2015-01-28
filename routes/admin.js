@@ -9,7 +9,8 @@ var ordersController = require('../controllers/orderController');
 var service = require('../services/main-service');
 
 router.get('/', function (req, res) {
-    res.render('authorization');
+   // res.render('authorization');
+    res.render('admin');
 });
 
 router.get('/admin', function (req, res) {
@@ -60,6 +61,14 @@ router.get('/GetAllOrders', function (req, res) {
     ordersController.getAllOrders(function (error, result) {
         if (!error) {
             res.send(result);
+        }    
+    });
+});
+
+router.post('/UpdateOrderStatus', function (req, res) {
+    ordersController.updateStatus(req.body.id, req.body.status, function (error, result) {
+        if (!error) {
+            res.send(undefined);
         }    
     });
 });

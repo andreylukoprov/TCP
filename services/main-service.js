@@ -93,6 +93,9 @@ var MainService = {
         })(function (result) {
             callback(undefined, result);
         });
+    },
+    updateOrderStatus: function (id, status, callback){
+        orderRepository.updateStatus(id, status, callback);
     }
 
 }/////

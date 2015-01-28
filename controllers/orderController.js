@@ -25,6 +25,9 @@ var OrderController =
                 });
             }        
         });
+    },
+    updateStatus: function (id, status, callback){
+        service.updateOrderStatus(id, status, callback);
     }
 }
 

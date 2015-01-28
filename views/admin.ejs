@@ -14,10 +14,14 @@
     <script src="/javascripts/angular/controllers/modalController.js"></script>
     <script src="/javascripts/angular/controllers/addEditModalController.js"></script>
     <script src="/javascripts/angular/controllers/addEditAuthorModalController.js"></script>
+    <script src="/javascripts/angular/controllers/orderInfoModalController.js"></script>
+
+
     <script src="/javascripts/bootstrap/bootstrap.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="/css/ui.css"/>
+
 </head>
 <body>
 <div ng-app="booksApp" ng-controller="booksController">
@@ -140,31 +144,34 @@
                             </tab>
                             <tab heading="Orders">
                                 <div>
-                                    <div>
-                                        <button type="button" class="btn btn-success" aria-label="Left Align">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"
-                                                  ng-click="openAddAuthor()">Add</span>
-                                        </button>
-                                    </div>
                                     <div class="margintop10">
                                         <table class="table table-hover table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>First name</th>
-                                                    <th>Last name</th>
-                                                    <th>Phone</th>
+                                                    <th>Order number</th>
+                                                    <th>Customer</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="order in orders" class="text-overflow">
+                                                <tr ng-repeat="order in orders" class="text-overflow {{order.status}}">
                                                     <td>{{$index+1}}</td>
-                                                    <td>{{order.customer.firstName}}</td>
-                                                    <td>{{order.customer.lastName}}</td>
-                                                    <td>{{order.customer.phone}}</td>
+                                                    <td>{{order.orderNumber}}</td>
+                                                    <td>{{order.customer.firstName}} {{order.customer.lastName}}, {{order.customer.phone}}</td>
                                                     <td>
-                                                        
+                                                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                                                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+                                                                  ng-click="openOrderInfo(this.order)"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"
+                                                                  ng-click="complited_decline(this.order,'Complited')"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"
+                                                                  ng-click="complited_decline(this.order,'Declined')"></span>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>

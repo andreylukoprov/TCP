@@ -28,3 +28,16 @@ hr {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.Declined{
+    background-color:lightcoral;
+}
+.Declined:hover{
+    background-color:#EFB8BF !important;
+}
+.Complited{
+    background-color:lightgreen;
+}
+.Complited:hover{
+    background-color:#C0EDB6 !important;
+}

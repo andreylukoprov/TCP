@@ -26,4 +26,8 @@ router.get('/PlaceAnOrder', function (req, res) {
     res.render('./modals/placeAnOrder');
 });
 
+router.get('/OrderInfo', function (req, res) {
+    res.render('./modals/orderInfo');
+});
+
 module.exports = router;
